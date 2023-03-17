@@ -1,0 +1,5 @@
+.github
+src/
+
+./tsconfig.json
+./.eslintrc.yml
