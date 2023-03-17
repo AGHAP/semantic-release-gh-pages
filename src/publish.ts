@@ -5,7 +5,6 @@ import * as fs from "./helpers/fs";
 export async function publish(pluginConfig: GitHubPagesOptions): Promise<void> {
   await git.stashDir(pluginConfig.srcFullPath);
   await git.checkoutBranch(pluginConfig.ghpBranch);
-  await fs.removeFile(pluginConfig.ghpFullPath);
   await git.restoreDir();
   await fs.moveFile(pluginConfig.srcFullPath, pluginConfig.ghpFullPath);
   await fs.removeFile(pluginConfig.srcFullPath);
