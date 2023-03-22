@@ -6,7 +6,7 @@ specifiers:
   '@types/semantic-release': ^20.0.1
   '@typescript-eslint/eslint-plugin': ^5.54.1
   '@typescript-eslint/parser': ^5.54.1
-  aggregate-error: ^4.0.1
+  aggregate-error: ^3.0.0
   commitizen: ^4.3.0
   cz-conventional-changelog: ^3.3.0
   eslint: ^8.35.0
@@ -24,7 +24,7 @@ devDependencies:
   '@types/semantic-release': registry.npmmirror.com/@types/semantic-release/20.0.1
   '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.56.0_iskin7c6dxqunwflhstekcjqmq
   '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.56.0_vgl77cfdswitgr47lm5swmv43m
-  aggregate-error: registry.npmmirror.com/aggregate-error/4.0.1
+  aggregate-error: registry.npmmirror.com/aggregate-error/3.1.0
   commitizen: registry.npmmirror.com/commitizen/4.3.0
   cz-conventional-changelog: registry.npmmirror.com/cz-conventional-changelog/3.3.0
   eslint: registry.npmmirror.com/eslint/8.36.0
@@ -598,7 +598,7 @@ packages:
     version: 1.0.1
     deprecated: This is a stub types definition. aggregate-error provides its own type definitions, so you do not need this installed.
     dependencies:
-      aggregate-error: registry.npmmirror.com/aggregate-error/4.0.1
+      aggregate-error: registry.npmmirror.com/aggregate-error/3.1.0
     dev: true
 
   registry.npmmirror.com/@types/fs-extra/11.0.1:
