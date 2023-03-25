@@ -1,6 +1,6 @@
 export enum GitHubPagesPathEnum {
-  ROOT = "/",
-  DOC = "/docs",
+  root = "/",
+  docs = "/docs",
 }
 
 export type GitHubPagesPath = GitHubPagesPathEnum;

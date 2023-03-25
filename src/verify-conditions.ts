@@ -14,7 +14,7 @@ export async function verifyConditions(
 
   src = src || ".";
   ghpBranch = ghpBranch || context.branch?.name || "";
-  ghpPath = ghpPath || GitHubPagesPathEnum.DOC;
+  ghpPath = ghpPath || GitHubPagesPathEnum.docs;
 
   const srcFullPath: string = await fs.resolve(
     context?.cwd || process.cwd(),
@@ -35,7 +35,7 @@ export async function verifyConditions(
     errors.push("config entry `src` does not refer to a valid directory");
   }
   if (!(ghpPath in GitHubPagesPathEnum)) {
-    errors.push("config entry `ghpPath` should be either `/` or `/doc`");
+    errors.push("config entry `ghpPath` should be either `root` or `docs`");
   }
 
   if (errors.length > 0) {
