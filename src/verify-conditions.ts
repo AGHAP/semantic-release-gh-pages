@@ -1,7 +1,7 @@
 import AggregateError from "aggregate-error";
 import type { Config, Context } from "semantic-release";
-import * as fs from "./helpers/fs";
-import { GitHubPagesPathEnum, GitHubPagesOptions } from "./helpers/shared";
+import * as fs from "./helpers/fs.js";
+import { GitHubPagesPathEnum, GitHubPagesOptions } from "./helpers/shared.js";
 
 export async function verifyConditions(
   pluginConfig: GitHubPagesOptions,
