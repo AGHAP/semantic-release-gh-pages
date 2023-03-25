@@ -1,2 +1,2 @@
-export * from "./verify-conditions";
-export * from "./publish";
+export * from "./verify-conditions.js";
+export * from "./publish.js";
