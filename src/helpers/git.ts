@@ -25,7 +25,7 @@ export async function stage(globs: string[]): Promise<void> {
 }
 
 export async function commit(message: string): Promise<void> {
-  await execa("git", ["commit", "-m", `"${message}"`]);
+  await execa("git", ["commit", "-m", message]);
 }
 
 export async function push(): Promise<void> {
