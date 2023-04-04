@@ -1,15 +1,18 @@
 export enum GitHubPagesPathEnum {
-  root = "/",
-  docs = "/docs",
+  ROOT = "/",
+  DOCS = "/docs",
 }
 
-export type GitHubPagesPath = GitHubPagesPathEnum;
+export type GitHubPagesPathValue =
+  | GitHubPagesPathEnum.ROOT
+  | GitHubPagesPathEnum.DOCS;
 
 export interface GitHubPagesOptions {
   src: string;
   srcFullPath: string;
   ghpBranch: string;
-  ghpPath: GitHubPagesPath;
+  ghpPath: GitHubPagesPathValue;
   ghpFullPath: string;
   message: string;
+  cleanupGlob: string | string[];
 }

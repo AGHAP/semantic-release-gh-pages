@@ -10,11 +10,12 @@ export async function verifyConditions(
   const errors: string[] = [];
 
   const { message } = pluginConfig;
-  let { src, ghpBranch, ghpPath } = pluginConfig;
+  let { src, ghpBranch, ghpPath, cleanupGlob } = pluginConfig;
 
   src = src || ".";
   ghpBranch = ghpBranch || context.branch?.name || "";
-  ghpPath = ghpPath || GitHubPagesPathEnum.docs;
+  ghpPath = ghpPath || GitHubPagesPathEnum.DOCS;
+  cleanupGlob = cleanupGlob || ["./**/*", "!.*"];
 
   const srcFullPath: string = await fs.resolve(
     context?.cwd || process.cwd(),
@@ -34,8 +35,11 @@ export async function verifyConditions(
   if (!fs.existFile(srcFullPath)) {
     errors.push("config entry `src` does not refer to a valid directory");
   }
-  if (!(ghpPath in GitHubPagesPathEnum)) {
-    errors.push("config entry `ghpPath` should be either `root` or `docs`");
+  if (
+    ghpPath !== GitHubPagesPathEnum.ROOT &&
+    ghpPath !== GitHubPagesPathEnum.DOCS
+  ) {
+    errors.push("config entry `ghpPath` should be either `/` or `/docs`");
   }
 
   if (errors.length > 0) {
@@ -47,4 +51,5 @@ export async function verifyConditions(
   pluginConfig.ghpBranch = ghpBranch;
   pluginConfig.ghpPath = ghpPath;
   pluginConfig.ghpFullPath = ghpFullPath;
+  pluginConfig.cleanupGlob = cleanupGlob;
 }

@@ -1,11 +1,15 @@
 import { execa } from "execa";
 
+export async function resetWorkspace(): Promise<void> {
+  await execa("git", ["clean", "-f", "-d", "-x", "-q"]);
+}
+
 export async function resetBranch(): Promise<void> {
   await execa("git", ["checkout", "-f"]);
 }
 
 export async function checkoutBranch(branch: string): Promise<void> {
-  await execa("git", ["checkout", "-f", branch]);
+  await execa("git", ["checkout", branch]);
 }
 
 export async function stashDir(src: string): Promise<void> {
@@ -25,7 +29,7 @@ export async function stage(globs: string[]): Promise<void> {
 }
 
 export async function commit(message: string): Promise<void> {
-  await execa("git", ["commit", "-m", `"${message}"`]);
+  await execa("git", ["commit", "-m", message]);
 }
 
 export async function push(): Promise<void> {
