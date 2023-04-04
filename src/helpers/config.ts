@@ -58,7 +58,7 @@ export function getMessage(opts: GitHubPagesOptions): string {
 export function getCleanupGlob(opts: GitHubPagesOptions): string[] {
   const cleanupGlob = opts.cleanupGlob;
   if (_.isNil(cleanupGlob)) {
-    return ["./**/*", "!.github", "!.git*", "!./node_modules"];
+    return ["./**/*", "!.github", "!.git*"];
   }
 
   return _.castArray(cleanupGlob);
