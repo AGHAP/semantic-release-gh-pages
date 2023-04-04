@@ -1,7 +1,11 @@
 import AggregateError from "aggregate-error";
 import type { Config, Context } from "semantic-release";
 import * as fs from "./helpers/fs.js";
-import { GitHubPagesOptions, getSrc, validateGhpPath } from "./helpers/config.js";
+import {
+  GitHubPagesOptions,
+  getSrc,
+  validateGhpPath,
+} from "./helpers/config.js";
 
 export async function verifyConditions(
   pluginConfig: GitHubPagesOptions,
