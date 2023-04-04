@@ -28,7 +28,7 @@ export async function getSrc(
 ): Promise<string> {
   const src = opts.src;
   const base = getBase(cwd);
-  return await fs.resolve(src, base);
+  return await fs.resolve(base, src);
 }
 
 export function getGhpBranch(opts: GitHubPagesOptions): string {
