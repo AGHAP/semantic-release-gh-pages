@@ -1,4 +1,4 @@
-import { isNil, castArray } from "lodash";
+import * as _ from "lodash";
 import * as fs from "./fs.js";
 
 export enum GitHubPagesPathEnum {
@@ -57,9 +57,9 @@ export function getMessage(opts: GitHubPagesOptions): string {
 
 export function getCleanupGlob(opts: GitHubPagesOptions): string[] {
   const cleanupGlob = opts.cleanupGlob;
-  if (isNil(cleanupGlob)) {
+  if (_.isNil(cleanupGlob)) {
     return ["./**/*", "!.github", "!.git*", "!./node_modules"];
   }
 
-  return castArray(cleanupGlob);
+  return _.castArray(cleanupGlob);
 }
