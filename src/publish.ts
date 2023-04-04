@@ -26,7 +26,7 @@ export async function publish(
 
   // Copy source to temporary directory
   const srcFiles = await fs.globMatch("./**/*", {
-    cwd: currDir,
+    cwd: srcFullPath,
   });
   for (const srcFile of srcFiles) {
     const srcFilePath = await fs.resolve(srcFullPath, srcFile);
