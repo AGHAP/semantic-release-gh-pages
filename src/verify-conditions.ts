@@ -1,7 +1,7 @@
 import AggregateError from "aggregate-error";
 import type { Config, Context } from "semantic-release";
 import * as fs from "./helpers/fs.js";
-import { GitHubPagesPathEnum, GitHubPagesOptions } from "./helpers/shared.js";
+import { getSrc, validateGhpPath } from "./helpers/config.js";
 
 export async function verifyConditions(
   pluginConfig: GitHubPagesOptions,
@@ -9,47 +9,17 @@ export async function verifyConditions(
 ): Promise<void> {
   const errors: string[] = [];
 
-  const { message } = pluginConfig;
-  let { src, ghpBranch, ghpPath, cleanupGlob } = pluginConfig;
+  const currDir = context?.cwd;
+  const srcFullPath = await getSrc(pluginConfig, currDir);
 
-  src = src || ".";
-  ghpBranch = ghpBranch || context.branch?.name || "";
-  ghpPath = ghpPath || GitHubPagesPathEnum.DOCS;
-  cleanupGlob = cleanupGlob || ["./**/*", "!.*"];
-
-  const srcFullPath: string = await fs.resolve(
-    context?.cwd || process.cwd(),
-    src
-  );
-  const ghpFullPath: string = await fs.resolve(
-    context?.cwd || process.cwd(),
-    `.${ghpPath}`
-  );
-
-  if (!message) {
-    errors.push("config entry `message` cannot be empty");
-  }
-  if (!ghpBranch) {
-    errors.push("config entry `ghpBranch` is required");
-  }
   if (!fs.existFile(srcFullPath)) {
     errors.push("config entry `src` does not refer to a valid directory");
   }
-  if (
-    ghpPath !== GitHubPagesPathEnum.ROOT &&
-    ghpPath !== GitHubPagesPathEnum.DOCS
-  ) {
+  if (!validateGhpPath(pluginConfig)) {
     errors.push("config entry `ghpPath` should be either `/` or `/docs`");
   }
 
   if (errors.length > 0) {
     throw new AggregateError(errors);
   }
-
-  pluginConfig.src = src;
-  pluginConfig.srcFullPath = srcFullPath;
-  pluginConfig.ghpBranch = ghpBranch;
-  pluginConfig.ghpPath = ghpPath;
-  pluginConfig.ghpFullPath = ghpFullPath;
-  pluginConfig.cleanupGlob = cleanupGlob;
 }
