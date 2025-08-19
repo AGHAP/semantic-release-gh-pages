@@ -2,4 +2,21 @@
 src/
 
 ./tsconfig.json
+
+# Eslint config
+# Legacy config
+./.eslintrc.js
+./.eslintrc.cjs
+./.eslintrc.json
+./.eslintrc.yaml
 ./.eslintrc.yml
+# FlatConfig
+./eslint.config.js
+./eslint.config.cjs
+./eslint.config.mjs
+./eslint.config.ts
+./eslint.config.cts
+./eslint.config.mts
+
+# Commitizen config
+./.czrc
